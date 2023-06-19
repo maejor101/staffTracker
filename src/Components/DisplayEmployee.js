@@ -32,7 +32,7 @@ function DisplayEmployee(props) {
             <th>Phone Number</th>
             <th>Position</th>
           </tr>
-          {props.employeeProfiles.map((data, index) => (
+          {props.staffData.map((data, index) => (
             <tr key={index}>
               <td className="imageFrame">
                 <img id="preview" src={data.employeeImg} alt="mugshot" width={30}></img>

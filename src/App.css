@@ -6,8 +6,8 @@
 .navBar {
   display: flex;
   column-gap: 20px;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: transparent;
+  color: transparent;
   align-items: center;
   padding: 10px;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
@@ -82,7 +82,7 @@ table {
 }
 
 td, th {
-  border: 1px solid #000000;
+  border: 1px solid #f6f6f6;
   text-align: left;
   padding: 8px;
 }

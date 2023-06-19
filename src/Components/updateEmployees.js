@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
+
 function UpdateEmployee() {
-  const updateEmployee = localStorage.getItem("employeeProfiles");
-  let employeeProfile = JSON.parse(updateEmployee);
+  const updateEmployee = localStorage.getItem("staffData");
+  let staffData = JSON.parse(updateEmployee);
   const update = localStorage.getItem("employee");
   let upEmployee = JSON.parse(update);
 
@@ -10,12 +11,12 @@ function UpdateEmployee() {
   const [employeeIndex, setEmployeeIndex] = useState(0);
  
   useEffect(() => {
-    for (let i = 0; i < employeeProfile.length; i++) {
-      if (upEmployee[0].employeeId === employeeProfile[i].employeeId) {
+    for (let i = 0; i < staffData.length; i++) {
+      if (upEmployee[0].employeeId === staffData[i].employeeId) {
         setEmployeeIndex(i);
       }
     }
-  }, [upEmployee, employeeProfile, employeeIndex]);
+  }, [upEmployee, staffData, employeeIndex]);
 
   const [employee, setEmployee] = useState({
     empID: upEmployee[0].employeeId,
@@ -26,15 +27,15 @@ function UpdateEmployee() {
   });
 
   function save() {
-    employeeProfile[employeeIndex].employeeId = employee.empID;
-    employeeProfile[employeeIndex].employeeName = employee.name;
-    employeeProfile[employeeIndex].employeeEmail = employee.empEmailAdress;
-    employeeProfile[employeeIndex].employeePosition = employee.position;
-    employeeProfile[employeeIndex].employeePhoneNumber = employee.phoneNumber;
+    staffData[employeeIndex].employeeId = employee.empID;
+    staffData[employeeIndex].employeeName = employee.name;
+    staffData[employeeIndex].employeeEmail = employee.empEmailAdress;
+    staffData[employeeIndex].employeePosition = employee.position;
+    staffData[employeeIndex].employeePhoneNumber = employee.phoneNumber;
 
-    localStorage.setItem("employeeProfiles", JSON.stringify(employeeProfile));
+    localStorage.setItem("staffData", JSON.stringify(staffData));
     console.log(employee);
-    console.log( employeeProfile);
+    console.log( staffData);
     window.location.reload();
   }
 
@@ -46,51 +47,30 @@ function UpdateEmployee() {
   )
 
   return (
+
     <div>
       <div className="form">
-        <input
-          type="text"
-          name="name"
-          placeholder="Name and Surname"
-           onChange={handleChange}
-        />
-        <input
-          type="number"
-          name="empID"
-          placeholder="Id Number"
-           onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="empEmailAdress"
-          placeholder="Email Address"
-           onChange={handleChange}
-          //   onKeyUp={event=>console.log(event)}
-        />
-        <input
-          type="number"
-          name="phoneNumber"
-          placeholder="Phone Number"
-           onChange={handleChange}
-        />
-        <input
-          type="file"
-          name="image"
-           onChange={handleChange}
-        />
-        <select
-          name="position"
-           onChange={handleChange}
-        >
-          <option>Employee Position</option>
-          <option>Project Manager</option>
-          <option>Scrum Master</option>
-          <option>FrontEnd Developer</option>
-          <option>BackEnd Developer</option>
+        <input type="text" name="name"  placeholder="Name and Surname" onChange={handleChange} />
+           
+        <input  type="number" name="empID" placeholder="Id Number" onChange={handleChange} />
+     
+        <input type="email" name="empEmailAdress"  placeholder="Email Address" onChange={handleChange} />
+            
+        <input type="number" name="phoneNumber" placeholder="Phone Number" onChange={handleChange}  />         
+       
+        <input  type="file" name="image" onChange={handleChange} />       
+        
+        <select  name="position" onChange={handleChange}  >
+          <option>Select Job Position</option>
+          <option>General Assistant (GA)</option>
+          <option>Meat Technician (MT)</option>
+          <option>Block Man (BM)</option>
+          <option>Trainee Manager (TM)</option>
         </select>
-        <button onClick={save}>Save changes</button>
+        <button onClick={save}>UPDATE INFO</button>
       </div>
     </div>
+   
   );
 }
 

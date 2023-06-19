@@ -40,10 +40,10 @@ function NewForm(props) {
     <div>
       <div className="form">
 
-        <input
-          type="text"
-          placeholder="Name & Surname"
-          onChange={(event) => setEmployeeName(event.target.value)}
+        <input  type="text"  placeholder="Name & Surname"
+         
+         
+         
         />
         <input
           type="number"
